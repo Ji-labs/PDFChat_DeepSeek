@@ -48,6 +48,7 @@ def process_docs(pdf_docs):
         st.error("Please upload PDF files to begin.")
         return False
     try:
+        import sentence_transformers  # Ensure sentence-transformers is installed
         raw_text = get_pdf_text(pdf_docs)
         text_chunks = get_text_chunks(raw_text)
         embeddings = HuggingFaceEmbeddings()
@@ -55,6 +56,9 @@ def process_docs(pdf_docs):
         st.session_state.conversation = get_conversation_chain(vectorstore)
         st.session_state.processComplete = True
         return True
+    except ImportError:
+        st.error("Could not import sentence_transformers. Please install it with `pip install sentence-transformers`.")
+        return False
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
         return False
