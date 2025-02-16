@@ -10,3 +10,4 @@ torchaudio
 tqdm
 transformers
 accelerate
+sentence-transformers
