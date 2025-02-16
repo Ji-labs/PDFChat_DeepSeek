@@ -1,6 +1,6 @@
 import streamlit as st
 from PyPDF2 import PdfReader
-from langchain_community.chat_models import ChatDeepSeek
+from langchain_deepseek import Deepseek
 from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
@@ -37,7 +37,7 @@ def get_text_chunks(text):
     return text_splitter.split_text(text)
 
 def get_conversation_chain(vectorstore):
-    llm = ChatDeepSeek(model="deepseek-chat-r1", temperature=0.5)
+    llm = Deepseek(api_key=os.environ["DEEPSEEK_API_KEY"], model="deepseek-chat-r1")
     template = """You are an expert PDF assistant. Use the following context to answer questions accurately.\nProvide clear, concise responses. If unsure, say so.\n\n{context}\nQuestion: {question}\nAnswer:"""
     prompt = PromptTemplate(input_variables=['context', 'question'], template=template)
     memory = ConversationBufferMemory(memory_key='chat_history', return_messages=True)
