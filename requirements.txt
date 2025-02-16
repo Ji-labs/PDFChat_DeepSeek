@@ -1,7 +1,7 @@
 streamlit
 PyPDF2
 langchain
-langchain-Deepseek
+langchain-deepseek==0.1.0
 langchain-community
 faiss-cpu
 torch
