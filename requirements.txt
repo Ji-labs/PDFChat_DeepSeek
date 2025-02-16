@@ -1,0 +1,14 @@
+streamlit
+PyPDF2
+langchain
+langchain-Deepseek
+langchain-community
+faiss-cpu
+torch
+torchvision
+torchaudio
+tqdm
+transformers
+accelerate
+tokenizers
+deepseek-cpp
